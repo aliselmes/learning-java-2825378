@@ -3,18 +3,45 @@ import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        double studentGPA = 3.45;
-        String studentFirstName = "Kayla";
-        String studentLastName = "Hammon";
 
-        System.out.println(studentFirstName + " " + studentLastName + " has a GPA of " + studentGPA);
-        System.out.println("What do you want to update it to?");
-
+    public static void announceDeveloperTeaTime() {
+        System.out.println("Waiting for developer tea time...");
+        System.out.println("Type a random word and press Enter to start developer tea time.");
         Scanner input = new Scanner(System.in);
-        studentGPA = input.nextDouble();
+        input.next();
+        System.out.println("It's developer tea time!");
+    }
 
-        System.out.println(studentFirstName + " " + studentLastName + " now has a GPA of " + studentGPA);
+    public static double calculateTotalMealPrice(double listedMealPrice, double tipRate, double taxRate) {
+        double tip = tipRate * listedMealPrice;
+        double tax = taxRate * listedMealPrice;
+        double result = listedMealPrice + tip + tax;
+        return result;
+    }
 
+    public static String moveCapitalLettersToFront(String s) {
+        StringBuilder result = new StringBuilder();
+        int capitalIndex = 0;
+        for(int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                result.insert(capitalIndex ++, ch);
+            } else {
+                result.append(ch);
+            }
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        //announceDeveloperTeaTime();
+        double groupTotalMealPrice = calculateTotalMealPrice(100, .2, .08);
+        System.out.println(groupTotalMealPrice);
+
+        double individualTotalMealPrice = groupTotalMealPrice / 5;
+        System.out.println(individualTotalMealPrice);
+
+        String word = moveCapitalLettersToFront("Hello1World");
+        System.out.println(word);
     }
 }
